@@ -1,0 +1,19 @@
+<div class="redo">
+  <ul class="listo">
+    <li>Home</li>
+    <li>About Us</li>
+    <li>Contact Us</li>
+  </ul>
+  <div class="btn">
+    {% if request.user.is_authenticated %} 
+      <a href="{% url 'userlogout' %}" class="mtn">Hi {{ request.user.username }}</a> 
+    {% else %}
+    <a href="{% url 'usersignup' %}" class="mtn">Signup</a>
+    {% endif %}
+    {% if request.user.is_authenticated %} 
+      <a href="{% url 'userlogout' %}" class="mtn">Logout</a> 
+    {% else %}
+    <a href="{% url 'userlogin' %}" class="mtn">Login</a>
+    {% endif %}
+  </div>
+</div>
