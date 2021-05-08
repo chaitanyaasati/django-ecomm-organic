@@ -9,6 +9,10 @@ class Pincode(models.Model):
     def _str_(self):
         return self.pincode
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('home')    
+
 class Address(models.Model):
     phone = models.CharField(max_length=50)
     address = models.TextField(max_length=500, null=True)

@@ -1,3 +1,7 @@
 from django.urls import include, path
+from . import views
 
-urlpatterns = []
+urlpatterns = [
+    path('query/',views.stockquery),
+    path('fruitquery/',views.fruitquery)
+]
