@@ -5,6 +5,7 @@ class Fruit(models.Model):
     description = models.TextField(max_length=500, null=True)
     variety = models.CharField(max_length=120)
     image = models.ImageField(upload_to="fruits/fruit",blank=True)
+    is_active = models.BooleanField(default=False)
 
     def _str_(self):
         return self.fruit_name
