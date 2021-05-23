@@ -20,7 +20,6 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['email'] = self.user.email
         return data
 
-
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
@@ -32,11 +31,9 @@ class MyTokenObtainPairView(TokenObtainPairView):
 #     # serializer = UserSerializer(user, many=False)
 #     return Response({"name":"sdfs"})
 
-@api_view(['GET','POST'])
+@api_view(['POST'])
 def apiusersignup(request):
-    if request.method == "GET":
-        return render(request, 'users/signup.html')
-    elif request.method == "POST":
+    if request.method == "POST":
         message = {}
         context = {}
         message['email'] = []
@@ -49,9 +46,7 @@ def apiusersignup(request):
         context['email'] = request.data.get('email',None)
         context['password'] = request.data.get('password',None)
         context['confirmpassword'] = request.data.get('confirmpassword',None)
-        print(request.data.get('firstname', None))
         user = User.objects.filter(username=request.data.get('email',None))
-        print("")
         if request.data.get('email',None) == "" or request.data.get('email',None)==None:
             message['email'].append('Please enter Email')
             context['message'] = message
@@ -77,7 +72,6 @@ def apiusersignup(request):
             message['confirmpassword'].append('Please enter Password again')
             context['message'] = message
             return Response(context)
-
         else:
             if validate_email(request.data.get('email')):
                 if(request.data.get('password') == request.data.get('confirmpassword')):

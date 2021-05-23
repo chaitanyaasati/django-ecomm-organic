@@ -1,41 +1,25 @@
-from django.shortcuts import render
 from fruits.models import Fruit
 from .models import Stock 
 from rest_framework import serializers
-from rest_framework.decorators import api_view,permission_classes
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
-class FruitSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Fruit
-        fields = '__all__'
-
-class StockSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Stock
-        fields = '__all__'  
-        depth = 2     
+from .serializers import StockSerializer,StockSingleSerializer
 
 # Create your views here.
 @api_view(['GET'])
-def stockquery(request):
+def fruitlist(request):
     query = request.query_params['query']
-    print(query)
     words=query.split()
-    fruits=[]
-    # d=Stock.objects.all()
+    stocks=[]
     for i in words:
-        fruits+=Fruit.objects.filter(fruit_name__contains=i)
-    # f=s[0].stock_set.all()
-    f=Stock.objects.filter(fruit_id__in=fruits)
-    serializer=StockSerializer(f,many=True)
+        stocks+=Stock.objects.filter(fruit_id__fruit_name__contains=i)
+    serializer=StockSerializer(stocks,many=True,context={'request':request})
     return Response(serializer.data)
 
 @api_view(['GET'])
-def fruitquery(request):
-    fruitid=request.query_params['id']
-    # f=s[0].stock_set.all()
-    # f=Stock.objects.filter(fruit_id=fruitid)
-    f=Stock.objects.filter(fruit_id__description='sdvcs',farm_id__farm_name="ganesh")
-    serializer=StockSerializer(f,many=True)
+def fruit(request):
+    fruitid=request.query_params['fruitid']
+    farmid=request.query_params['farmid']
+    fruit=Stock.objects.get(fruit_id=fruitid,farm_id=farmid,quantity__gt=0)
+    serializer=StockSingleSerializer(fruit,context={'request':request})
     return Response(serializer.data)    

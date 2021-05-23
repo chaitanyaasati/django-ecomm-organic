@@ -13,7 +13,7 @@ class Stock(models.Model):
     price = models.DecimalField(max_digits=999999,decimal_places=2)
     discount = models.FloatField()
     quantity = models.FloatField()
-    fruit_id = models.ForeignKey(Fruit,on_delete = models.CASCADE )
+    fruit_id = models.ForeignKey(Fruit,on_delete = models.CASCADE)
     farm_id = models.ForeignKey(Farm, on_delete = models.CASCADE)
     
     def _str_(self):
