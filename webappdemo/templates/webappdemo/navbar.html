@@ -1,0 +1,43 @@
+{% load static %}
+<nav>
+    <div class="navbar">
+      <div class="nav-hamburger">
+        <i class="fas fa-bars fa-2x" onclick="openSlideMenu()"></i>
+      </div>
+      <div class="nav-logo">
+        <img class="nav-logo-logoimg" src="{% static './assets/images/logo.png'%}" alt="icon" />
+      </div>
+      <div class="nav-searchbar">
+        <form action="/">
+          <div class="nav-searchbar-form">
+            <input type="text" name="serach" id="" />
+            <a class="nav-searchbar-form-searchicon">
+              <i class="fas fa-search"></i
+            ></a>
+          </div>
+        </form>
+      </div>
+      <div class="nav-greeting"> <a  class="greeting-link" href="#">Hi Login  <i class="arrow down"></i></a>
+          <div class="dropdown">
+              <h4>Your Account</h4>
+              <div><a href="#">Profile</a></div>
+              <div><a href="#">Your Orders</a></div>
+              <div><a href="#">Seller Account</a></div>
+              <div><a href="#">Signout</a></div>
+          </div>
+      </div>
+      <div class="nav-cart">
+        <a href="./cart.html"><i class="fas fa-shopping-cart fa-2x fg"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="side-menu" class="side-nav">
+      <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+      <div>Hi <a href="#">Login</a></div>
+      <div><h4>Your Account</h4></div>
+      <div class="side-list"><a href="#">Profile</a></div>
+      <div class="side-list"><a href="#">Your Orders</a></div>
+      <div class="side-list"><a href="#">Seller Account</a></div>
+      <div class="side-list"><a href="#">Signout</a></div>
+  </div>
