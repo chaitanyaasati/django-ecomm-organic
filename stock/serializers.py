@@ -10,11 +10,11 @@ class StockSerializer(serializers.ModelSerializer):
     farm = FarmSerializer(source='farm_id')
     class Meta:
         model = Stock
-        fields = ['price', 'discount', 'quality', 'fruit', 'farm']  
+        fields = ['id','price', 'discount', 'quality', 'fruit', 'farm']  
 
 class StockSingleSerializer(serializers.ModelSerializer):
     fruit = FruitSingleSerializer(source='fruit_id')
     farm = FarmSerializer(source='farm_id')
     class Meta:
         model = Stock
-        fields = ['price', 'discount', 'quality', 'fruit', 'farm']                 
+        fields = ['id','price', 'discount', 'quality', 'fruit', 'farm']                 
