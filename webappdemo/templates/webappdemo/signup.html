@@ -1,6 +1,68 @@
+{% load static %}
+{% if message.password %} 
+    <div class="form-container">
+      {% for x in message.password %}
+      <div class="error">
+        {{ x }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if message.email %}
+    <div class="form-container">
+      {% for x in message.email %}
+      <div class="error">
+        {{ x }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if message.success %}
+    <div class="form-container">
+      {% for x in message.success %}
+      <div class="error">
+        {{ x }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if message.firstname %} 
+    <div class="form-container">
+      {% for x in message.firstname %}
+      <div class="error">
+        {{ x }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if message.lastname %} 
+    <div class="form-container">
+      {% for x in message.lastname %}
+      <div class="error">
+        {{ x }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if message.confirmpassword %} 
+    <div class="form-container">
+      {% for x in message.confirmpassword %}
+      <div class="error">
+        {{ x }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
 <div class="form-container">
     <a href={% url 'product_list' %}><h1>Fruit Ecomm</h1></a>
     <form class="form-form" method="POST">
+      {% csrf_token %}
       <div class="form-elements">
         <div class="form-label"><label>Firstname:</label></div>
         <input type="text" name="firstname"/>

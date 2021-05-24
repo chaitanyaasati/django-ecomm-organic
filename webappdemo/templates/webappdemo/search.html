@@ -1,0 +1,15 @@
+{% load static %}
+<div class="fruit-list">
+    <div class="fruit-container">
+        {% for x in stocks %}
+        <div class="fruit">
+            <h4>{{x.fruit_id.fruit_name}}</h4>
+            <div hidden class="stockid">{{x.id}}</div>
+            <a href={% url 'product' %}><img class="fruit-image" src="{{ x.fruit_id.image.url }}" alt="" /></a>
+            <div class="fruit-mrp">MRP:- Rs. 230</div>
+            <div>Deal Price :- Rs. 230</div>
+            <button class="fruit-btn" onclick="addToCart()">Add to Cart</button>
+        </div>
+        {% endfor %}
+    </div>    
+  </div>
