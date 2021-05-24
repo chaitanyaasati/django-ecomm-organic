@@ -17,9 +17,16 @@ def fruitlist(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
+def homelist(request):
+    stocks=Stock.objects.filter(fruit_id__fruit_name__contains="mango")
+    serializer=StockSerializer(stocks,many=True,context={'request':request})
+    return Response(serializer.data)    
+
+@api_view(['GET'])
 def fruit(request):
-    fruitid=request.query_params['fruitid']
-    farmid=request.query_params['farmid']
-    fruit=Stock.objects.get(fruit_id=fruitid,farm_id=farmid,quantity__gt=0)
+    # fruitid=request.query_params['fruitid']
+    # farmid=request.query_params['farmid']
+    stockid = request.query_params['stockid']
+    fruit=Stock.objects.get(id=stockid,quantity__gt=0)
     serializer=StockSingleSerializer(fruit,context={'request':request})
     return Response(serializer.data)    
