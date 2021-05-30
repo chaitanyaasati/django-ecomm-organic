@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-@l0rd!1xh2_y@(-+ij)q6)u4wsa^a%=elb!@av13&2ppe_c)@w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-first-chaitanya.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['django-first-chaitanya.herokuapp.com','127.0.0.1','*']
+
+
+CORS_ALLOW_ALL_ORIGINS=True
 
 CORS_ORIGIN_WHITELIST = (
 'http://127.0.0.1:8000',
