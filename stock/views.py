@@ -27,6 +27,9 @@ def fruit(request):
     # fruitid=request.query_params['fruitid']
     # farmid=request.query_params['farmid']
     stockid = request.query_params['stockid']
-    fruit=Stock.objects.get(id=stockid,quantity__gt=0)
-    serializer=StockSingleSerializer(fruit,context={'request':request})
+    try:
+        fruit=Stock.objects.get(id=stockid,quantity__gt=0)
+    except Stock.DoesNotExist:
+        fruit=None
+    serializer=StockSingleSerializer(fruit,context={'request':request})    
     return Response(serializer.data)    
