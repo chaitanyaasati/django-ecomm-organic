@@ -30,9 +30,9 @@ ALLOWED_HOSTS = ['django-first-chaitanya.herokuapp.com','127.0.0.1','*']
 
 
 CORS_ALLOW_ALL_ORIGINS=True
+CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
-'http://127.0.0.1:8000',
 'http://localhost:3000'
 )
 # Application definition
