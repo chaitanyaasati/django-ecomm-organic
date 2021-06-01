@@ -1,0 +1,72 @@
+{% extends 'webappdemo/base.html' %} 
+{% block main %}
+{% include 'webappdemo/whitenav.html'%}
+{% include 'webappdemo/address.html' %}
+
+<script>
+      sbtns=document.getElementsByClassName('sbtn')
+      finalcard=document.getElementsByClassName('address-final')[0]
+      for(var i=0;i<sbtns.length;i++){
+          sbtns[i].addEventListener('click',function(e){
+              btn=e.target
+              acard=btn.parentElement.parentElement
+              address=acard.getElementsByClassName('acard--address')[0].textContent
+              area=acard.getElementsByClassName('acard--area')[0].textContent
+              city=acard.getElementsByClassName('acard--city')[0].textContent
+              state=acard.getElementsByClassName('acard--state')[0].textContent
+              phone=acard.getElementsByClassName('acard--phone')[0].textContent
+              upDateCard(address,area,city,state,phone)
+          })
+      }
+
+      function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+
+      function upDateCard(address,area,city,state,phone){
+          acard=finalcard.getElementsByClassName('acard')[0]
+          acard.getElementsByClassName('acard--address')[0].textContent=address
+          acard.getElementsByClassName('acard--area')[0].textContent=area
+          acard.getElementsByClassName('acard--city')[0].textContent=city
+          acard.getElementsByClassName('acard--state')[0].textContent=state
+          acard.getElementsByClassName('acard--phone')[0].textContent=phone
+      }
+      ebtns=document.getElementsByClassName('ebtn')
+      console.log(getCookie('csrftoken'))
+      for(var i=0;i<ebtns.length;i++){
+          ebtns[i].addEventListener('click',function(e){
+              btn=e.target
+              acard=btn.parentElement.parentElement
+              id=acard.getElementsByClassName('acard--id')[0].textContent
+              fetch('{% url 'deleteaddress' %}',
+              {
+                  headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'X-CSRFToken': getCookie('csrftoken')
+                  },
+                  method: "POST",
+                  body: JSON.stringify({"id": id})
+              }
+              )
+              .then(response => response.json())
+              .then(data => console.log(data));
+            //   location.reload()
+          })
+      }
+</script>
+
+{% endblock %}

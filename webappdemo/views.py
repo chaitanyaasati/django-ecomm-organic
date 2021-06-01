@@ -1,10 +1,13 @@
-from django.http.response import HttpResponse
+from rest_framework.decorators import api_view
+from users.models import Address, Pincode
+from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from .functions import validate_email
 from django.contrib.auth import authenticate, login, logout
 from stock.models import Stock
+from rest_framework.response import Response
 
 
 def signin(request):
@@ -128,3 +131,37 @@ def search(request):
             stocks+=Stock.objects.filter(fruit_id__fruit_name__contains=i)
         context['stocks']=stocks
         return render(request,'webappdemo/pages/search.html',context)
+
+def address(request):
+    if request.method == 'GET':
+        address_list={}
+        if request.user.is_authenticated:
+            address_list=Address.objects.filter(user_id=request.user)
+        context={"address":address_list}
+        return render(request,'webappdemo/pages/address.html',context) 
+
+def addAddress(request):
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            address=request.POST['address']
+            print(address)
+            print("i am here")
+            area=request.POST['area']
+            city=request.POST['city']
+            state=request.POST['state']
+            pincode=request.POST['pincode']
+            pincode=Pincode.objects.get(pincode=pincode)
+            phone=request.POST['phone']
+            adr=Address(user_id=request.user,phone=phone,address=address,area=area,pincode=pincode)
+            adr.save()
+            return redirect('address')   
+
+@api_view(['POST'])
+def deleteAddress(request):
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            id=request.data['id']
+            s=Address.objects.get(user_id=request.user,id=id).delete()
+            return Response({"status":"Address is deleted"})
+        else:
+            return redirect('signin')                        

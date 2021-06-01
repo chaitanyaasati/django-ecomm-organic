@@ -16,6 +16,7 @@ nav{
     background-color: aquamarine;
     max-width: 1000px;
     margin: auto;
+    min-height: 48px;
 }
 
 .nav-hamburger{
@@ -412,7 +413,19 @@ footer{
     align-self: stretch;
     margin: 10px;
     padding: 10px;
+    display:flex;
   }
+
+  .item-info .image{
+    margin-right: 10px;
+  }
+
+  .item-info-img{
+    width: 70px;
+    height: 50px;
+    object-fit: contain;
+  }
+
   .item-weight {
     flex-grow: 1;
     background-color: rgb(113, 181, 221);
@@ -446,6 +459,12 @@ footer{
     flex-direction: column;
     height: 100%;
   }
+
+  .total a{
+      text-decoration: none;
+      color:black;
+  }
+
   .total > h3 {
     text-align: center;
     background-color: rgb(113, 181, 221);
@@ -460,12 +479,115 @@ footer{
     font-size: 20px;
   }
 
+  .lengthinput{
+    width: 50px;
+  }
+
+  /* address */
+  .address-main{
+    max-width: 1000px;
+    margin: auto;
+}
+
+.address-container{
+	display: grid;
+	grid-template-areas: "select select final"
+						"form form final"
+}
+
+.address-list{
+	grid-area: select;
+	display:grid;
+	grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    background-color: skyblue;
+    padding: 20px;
+}
+
+.address-final{
+	background-color:pink;
+	grid-area: final;
+	padding: 20px;
+}
+
+.address-edit{
+	grid-area: form;
+	background-color: green;
+}
+
+.acard{
+	background-color: red;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.acard--btns{
+	display: flex;
+	margin-top: 10px;
+}
+
+.acard--btns .acard--btn{
+	flex:1;
+	padding: 3px;
+}
+
+.af-heading{
+	margin-bottom: 15px;
+	font-size: 20px;
+}
+
+.af-price{
+    margin-top: 10px;
+    background-color: red;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.af-add-msg{
+    background-color: red;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.af-btn{
+	margin-top: 10px;
+	width: 100%;
+	padding: 10px;
+}
+
+.address-form{
+	padding: 10px;
+}
+
+.afo-heading{
+	margin: 10px;
+	font-size: 20px;
+	background-color: yellow;
+}
+
+.afo-input input{
+	width: 100%;
+	padding: 10px;
+	margin: 10px;
+	display: flex;
+}
+
+.afo-input{
+	display: flex;
+}
+
+.submit{
+	display: inline-flex;
+	justify-content: center;
+}
+
 @media(max-width:568px){
 
     .navbar{
         grid-template-columns: .5fr 2fr 2fr .5fr;
         grid-template-areas: "ham logo . cart"
-                             "search search search search";
+                             "search search search search";                     
     }
     
     .nav-logo{
@@ -534,5 +656,15 @@ footer{
           "left"
           "right";
       }
+
+      .address-container{
+		grid-template-areas: "final"
+						"select"
+						"form"
+	}
+
+	.address-list{
+		grid-template-columns: 1fr; 
+	}  
 
 }

@@ -1,0 +1,90 @@
+<div class="address-main">
+    <div class="address-container">
+        <div class="address-list">
+            {% for i in address %}
+            <div class="acard">
+                <div class="acard--address">{{i.address}}</div>
+                <div  hidden class="acard--csrf">{% csrf_token %}</div>
+                <div  hidden class="acard--id">{{i.id}}</div>
+                <div class="acard--area">{{i.area}}</div>
+                <div class="acard--city">{{i.pincode.city}}</div>		
+                <div class="acard--state">{{i.pincode.state}}-<span>{{i.pincode.pincode}}<span></div>
+                <div class="acard--phone">9075114404</div>	
+                <div class="acard--btns"><button class="acard--btn ebtn">Delete</button><button class="acard--btn sbtn">Select</button></div>	
+            </div>
+            {% endfor %}
+            <!-- <div class="acard">
+                <div class="acard--address">Qrt No 3/53, Sitaramji Vaidya Marg</div>
+                <div class="acard--area">Raghuji Nagar</div>
+                <div class="acard--city">Nagpur</div>		
+                <div class="acard--state">Maharashtra-<span>440024<span></div>
+                <div class="acard--phone">9075114404</div>	
+                <div class="acard--btns"><button class="acard--btn">Edit</button><button class="acard--btn">Select</button></div>	
+            </div>
+            <div class="acard">
+                <div class="acard--address">Qrt No 3/53, Sitaramji Vaidya Marg</div>
+                <div class="acard--area">Raghuji Nagar</div>
+                <div class="acard--city">Nagpur</div>		
+                <div class="acard--state">Maharashtra-<span>440024<span></div>
+                <div class="acard--phone">9075114404</div>	
+                <div class="acard--btns"><button class="acard--btn">Edit</button><button class="acard--btn">Select</button></div>	
+            </div>
+            <div class="acard">
+                <div class="acard--address">Qrt No 3/53, Sitaramji Vaidya Marg</div>
+                <div class="acard--area">Raghuji Nagar</div>
+                <div class="acard--city">Nagpur</div>		
+                <div class="acard--state">Maharashtra-<span>440024<span></div>
+                <div class="acard--phone">9075114404</div>	
+                <div class="acard--btns"><button class="acard--btn">Edit</button><button class="acard--btn">Select</button></div>	
+            </div>
+            <div class="acard">
+                <div class="acard--address">Qrt No 3/53, Sitaramji Vaidya Marg</div>
+                <div class="acard--area">Raghuji Nagar</div>
+                <div class="acard--city">Nagpur</div>		
+                <div class="acard--state">Maharashtra-<span>440024<span></div>
+                <div class="acard--phone">9075114404</div>	
+                <div class="acard--btns"><button class="acard--btn">Edit</button><button class="acard--btn">Select</button></div>	
+            </div> -->
+        </div>
+        <div class="address-final">
+            <div class="af-heading">Shipping Address</div>
+            <div class="af-add-msg">Please Select/Add address</div>
+            <div class="acard">
+                <div class="acard--address">Qrt No 3/53, Sitaramji Vaidya Marg</div>
+                <div class="acard--area">Raghuji Nagar</div>
+                <div class="acard--city">Nagpur</div>		
+                <div class="acard--state">Maharashtra-<span>440024<span></div>
+                <div class="acard--phone">9075114404</div>	
+            </div>
+            <div class="af-price">
+                <div>Total: Rs.<span>4500</span></div>
+            </div>
+            <button class="af-btn">Make Payment</button>
+        </div>
+        <div class="address-edit">
+            <form action={% url 'addaddress' %} method="POST">
+                {% csrf_token %}
+                <div class="address-form">
+                    <div class="afo-heading">Add Address</div>
+                    <div class="afo-input">
+                        <input required type="text" name="address" placeholder="Address...">
+                    </div>
+                    <div class="afo-input">
+                        <input required type="text" name="area" placeholder="Area...">
+                    </div>
+                    <div class="afo-input">
+                        <input required type="text" name="city" placeholder="City...">
+                        <input required type="text" name="state" placeholder="State...">
+                    </div>
+                    <div class="afo-input">
+                        <input required type="text" name="pincode" placeholder="Pincode...">
+                        <input required type="text" name="phone" placeholder="Phone...">
+                    </div>
+                    <div class="afo-input">
+                        <input required class="submit" type="submit" name="submit" value="Submit">
+                    </div>
+                </div>	
+            </form>
+        </div>
+    </div>
+</div>

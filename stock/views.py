@@ -3,7 +3,7 @@ from .models import Stock
 from rest_framework import serializers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import StockSerializer,StockSingleSerializer
+from .serializers import StockDoubleSerializer, StockSerializer,StockSingleSerializer
 
 # Create your views here.
 @api_view(['GET'])
@@ -27,9 +27,10 @@ def fruit(request):
     # fruitid=request.query_params['fruitid']
     # farmid=request.query_params['farmid']
     stockid = request.query_params['stockid']
+    print("jgvjh")
     try:
         fruit=Stock.objects.get(id=stockid,quantity__gt=0)
     except Stock.DoesNotExist:
         fruit=None
-    serializer=StockSingleSerializer(fruit,context={'request':request})    
+    serializer=StockDoubleSerializer(fruit,context={'request':request})    
     return Response(serializer.data)    

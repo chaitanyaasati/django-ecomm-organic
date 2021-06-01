@@ -16,6 +16,7 @@ class Pincode(models.Model):
 class Address(models.Model):
     phone = models.CharField(max_length=50)
     address = models.TextField(max_length=500, null=True)
+    area = models.CharField(max_length=100)
     pincode = models.ForeignKey(Pincode,null=True,on_delete=models.CASCADE)
     user_id = models.ForeignKey(User,on_delete=models.CASCADE)
 

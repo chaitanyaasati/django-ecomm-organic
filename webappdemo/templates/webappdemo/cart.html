@@ -1,13 +1,19 @@
+{% load static %}
 <div class="cart">
   <div class="left-o">
     <div class="item">
       <div class="item-info">
-        <h4>Pineapple Aplhi Terum</h4>
-        <p>Genethe Farm</p>
-        <p>Rs.250/kg</p>
+        <div class="image">
+          <img class="item-info-img" src="{% static './assets/images/pineapple.jpg'%}">
+        </div>
+        <div>
+          <h4>Pineapple Aplhi Terum</h4>
+          <p>Genethe Farm</p>
+          <p>Rs.250/kg</p>
+        </div>
       </div>
       <div class="item-weight">
-        <h5>Weight: 3.5 kg</h5>
+        <h5>Weight:  <input class="lengthinput" type="number" name="" min="0.5" max="5" step="0.5" value=0.5>  kg</h5>
       </div>
       <div class="item-price">
         <h5>Rs.600</h5>
@@ -15,12 +21,35 @@
     </div>
     <div class="item">
       <div class="item-info">
-        <h4>Pineapple Aplhi Terum</h4>
-        <p>Genethe Farm</p>
-        <p>Rs.250/kg</p>
+        <div class="image">
+          <img class="item-info-img" src="{% static './assets/images/pineapple.jpg'%}">
+        </div>
+        <div>
+          <h4>Pineapple Aplhi Terum</h4>
+          <p>Genethe Farm</p>
+          <p>Rs.250/kg</p>
+        </div>
       </div>
       <div class="item-weight">
-        <h5>Weight: 3.5 kg</h5>
+        <h5>Weight:  <input class="lengthinput" type="number" name="" min="0.5" max="5" step="0.5" value=0.5> kg</h5>
+      </div>
+      <div class="item-price">
+        <h5>Rs.600</h5>
+      </div>
+    </div>
+    <div class="item">
+     <div class="item-info">
+        <div class="image">
+          <img class="item-info-img" src="{% static './assets/images/pineapple.jpg'%}">
+        </div>
+        <div>
+          <h4>Pineapple Aplhi Terum</h4>
+          <p>Genethe Farm</p>
+          <p>Rs.250/kg</p>
+        </div>
+      </div>
+      <div class="item-weight">
+        <h5>Weight:  <input class="lengthinput" type="number" name="" min="0.5" max="5" step="0.5" value=0.5>  kg</h5>
       </div>
       <div class="item-price">
         <h5>Rs.600</h5>
@@ -28,12 +57,17 @@
     </div>
     <div class="item">
       <div class="item-info">
-        <h4>Pineapple Aplhi Terum</h4>
-        <p>Genethe Farm</p>
-        <p>Rs.250/kg</p>
+        <div class="image">
+          <img class="item-info-img" src="{% static './assets/images/pineapple.jpg'%}">
+        </div>
+        <div>
+          <h4>Pineapple Aplhi Terum</h4>
+          <p>Genethe Farm</p>
+          <p>Rs.250/kg</p>
+        </div>
       </div>
       <div class="item-weight">
-        <h5>Weight: 3.5 kg</h5>
+        <h5>Weight:  <input class="lengthinput" type="number" name="" min="0.5" max="5" step="0.5" value=0.5>  kg</h5>
       </div>
       <div class="item-price">
         <h5>Rs.600</h5>
@@ -43,7 +77,7 @@
   <div class="right-o">
     <div class="total">
       <h3>Total: 800</h3>
-      <button>Proceed to Buy</button>
+      <button><a href="{% url 'address' %}">Next Step</a></button>
     </div>
   </div>
 </div>

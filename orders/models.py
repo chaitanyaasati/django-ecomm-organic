@@ -12,7 +12,7 @@ class Orders(models.Model):
     is_payment_done = models.BooleanField(default= False)
     order_time = models.DateTimeField(auto_now=True)
     delivery_time = models.DateTimeField(auto_now=False)
-
+    complete = models.BooleanField(default=False)
 
     def _str_(self):
         return self.user_id
