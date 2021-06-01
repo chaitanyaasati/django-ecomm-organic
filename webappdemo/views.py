@@ -164,4 +164,17 @@ def deleteAddress(request):
             s=Address.objects.get(user_id=request.user,id=id).delete()
             return Response({"status":"Address is deleted"})
         else:
-            return redirect('signin')                        
+            return redirect('signin')       
+
+from rest_framework import status
+from rest_framework.response import Response
+
+# @api_view(['GET'])
+# def empty_view(self):
+#     content = {'please move along': 'nothing to see here'}
+#     return Response(content, status=status.HTTP_511_NETWORK_AUTHENTICATION_REQUIRED)    
+
+@api_view(['GET'])
+def empty_view(self):
+    content = {'please move along': 'nothing to see here'}
+    return Response(content)                              

@@ -32,13 +32,16 @@ ALLOWED_HOSTS = ['django-first-chaitanya.herokuapp.com','127.0.0.1']
 # CORS_ALLOW_ALL_ORIGINS=True
 # CORS_ORIGIN_ALLOW_ALL = False
 
-CORS_ORIGIN_WHITELIST = (
-'http://localhost:3000'
-)
+# CORS_ORIGIN_WHITELIST = (
+# 'http://localhost:3000'
+# )
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "https://www.google.com",
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
 
 INSTALLED_APPS = [

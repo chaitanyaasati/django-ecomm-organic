@@ -51,7 +51,7 @@
               btn=e.target
               acard=btn.parentElement.parentElement
               id=acard.getElementsByClassName('acard--id')[0].textContent
-              fetch('{% url 'deleteaddress' %}',
+              fetch('{% url "deleteaddress" %}',
               {
                   headers: {
                   'Accept': 'application/json',

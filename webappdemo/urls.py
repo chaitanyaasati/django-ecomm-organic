@@ -12,4 +12,5 @@ urlpatterns = [
     path('address/',views.address,name='address'),
     path('addaddress/',views.addAddress,name='addaddress'),
     path('deleteaddress/',views.deleteAddress,name='deleteaddress'),
+    path('empty/',views.empty_view),
 ]
